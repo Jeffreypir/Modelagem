@@ -4,21 +4,8 @@
 #include <stdio.h>
 
 /* Defindo a função produto */
-int prod(int c, int g, int t){ 
+float prod(float c, float g, float t){ 
 	return (c*t)*(g*t);
-}
-
-/* Defindo uma função auxiliar para encontra o menor número de um vetor */
-int menor(int *x){
-	 int i,menor = x[0];
-	 for (i = 0; i < 4; i++){
-	 	if(menor <= x[i]){
-			menor = menor;
-		}else{
-			menor = x[i];
-		}
-	}
-	return menor;
 }
 
 /*Tomemos as seguintes definições:
@@ -32,25 +19,26 @@ int menor(int *x){
 
 /* Iniciando a função de custo futuro */
 int main(){ 
-	int x[] = {1,2,3,4},y[] = {1,1,1,1}, z[] = {2,3,6,9}, w[]= {1,3,5,7},i,l,menor,vetor[4], soma, t;
-	printf (" Digite o valor de t(meses) para ser avaliado: ");
+	float x[] = {1,2,3,4},y[] = {1,1,1,1}, z[] = {2,3,6,9}, w[]= {1,3,5,7};
+	int t,soma,i,l,j = sizeof(x)/sizeof(x[0]);;
+	printf ("Digite o valor de t(meses) para ser avaliado: ");
 	scanf("%d", &l); 
-	int fim[l];
+	float valor_final[l]; 
+	int vetor[j];
 	for (t = 0; t < l; t ++){
-		for (i = 0;i < sizeof(x)/sizeof(x[0]); i++){
+		for (i = 0;i < j; i++){
 			vetor[i] = prod(x[i],y[i],t) + z[i] + w[i];
 		}
 	soma = 0;
-		for (i = 0; i < sizeof(x)/sizeof(x[0]) ; i++){
+		for (i = 0; i < j ; i++){
 			soma = soma + vetor[i];
 		}
-	fim[t] = soma;
+	valor_final[t] = soma;
 	soma = 0;
 	}
-	for ( i = 0; i < l; i++){
-		printf ( " %d \n", fim[i]);
+	for ( i = 0; i < l ; i++){
+		printf ( " %f \n", valor_final[i]);
 	}
 	return 0;
 }
-
 
