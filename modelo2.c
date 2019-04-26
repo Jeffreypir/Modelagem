@@ -4,8 +4,8 @@
 #include <stdio.h>
 
 /* Defindo a função produto */
-int prod(int ct, int gt){ 
-	return ct*gt;
+int prod(int c, int g, int t){ 
+	return (c*t)*(g*t);
 }
 
 /* Defindo uma função auxiliar para encontra o menor número de um vetor */
@@ -20,6 +20,7 @@ int menor(int *x){
 	}
 	return menor;
 }
+
 /*Tomemos as seguintes definições:
  * ct é o custo de Geração térmica associado á unidade termoelétrican n do subsistema s, no estágio t
  * gt é o custo de Geração da unidade termelétrica n do subsitema s, no estágio t
@@ -31,12 +32,23 @@ int menor(int *x){
 
 /* Iniciando a função de custo futuro */
 int main(){ 
-	int  x[] = {1,2,3,4},y[] = {1,1,1,1}, z[] = {0,0,0,0}, w[]= {0,0,0,0},i,menor,vetor[4],soma;
-	for (i = 0;i < sizeof(x)/sizeof(x[0]); i++){
-		vetor[i] = prod(x[i],y[i]) + z[i] + w[i];
+	int x[] = {1,2,3,4},y[] = {1,1,1,1}, z[] = {2,3,6,9}, w[]= {1,3,5,7},i,l,menor,vetor[4], soma, t;
+	printf (" Digite o valor de t(meses) para ser avaliado: ");
+	scanf("%d", &l); 
+	int fim[l];
+	for (t = 0; t < l; t ++){
+		for (i = 0;i < sizeof(x)/sizeof(x[0]); i++){
+			vetor[i] = prod(x[i],y[i],t) + z[i] + w[i];
+		}
+	soma = 0;
+		for (i = 0; i < sizeof(x)/sizeof(x[0]) ; i++){
+			soma = soma + vetor[i];
+		}
+	fim[t] = soma;
+	soma = 0;
 	}
-	for (i = 0; i < sizeof(x)/sizeof(x[0]); i++){
-		printf (" %d \n", vetor[i]);
+	for ( i = 0; i < l; i++){
+		printf ( " %d \n", fim[i]);
 	}
 	return 0;
 }
