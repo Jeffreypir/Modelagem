@@ -22,12 +22,12 @@ int menor(int *x){
 }
 
 /*Tomemos as seguintes definições:
- * ct é o custo de Geração térmica associado á unidade termoelétrican n do subsistema s, no estágio t
- * gt é o custo de Geração da unidade termelétrica n do subsitema s, no estágio t
- * cd é o custo de déficit associado ao subsistema
- * def défcit no estágio t, associado ao subsistema s
- * nsis número de subsitemas 
- * ngts de unidades termooelétricas do subsitema s
+ * ct é o custo de Geração térmica associado á unidade termoelétrican n do subsistema s, no estágio t (depedendo pode ser dias, meses,etc).
+ * gt é o custo de Geração da unidade termelétrica n do subsistema s, no estágio t (depedendo pode ser dias, meses, etc).
+ * cd é o custo de déficit associado ao subsistema.
+ * def défcit no estágio t, associado ao subsistema s.
+ * nsis número de subsitemas.
+ * ngts de unidades termooelétricas do subsitema s.
  */
 
 /* Iniciando a função de custo futuro */
