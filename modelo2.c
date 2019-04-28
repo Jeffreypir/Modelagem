@@ -36,7 +36,7 @@ int main(){
 		vetor[i] = prod(x[i],y[i]) + z[i] + w[i];
 	}
 	for (i = 0; i < sizeof(x)/sizeof(x[0]); i++){
-		printf ("%d \n", vetor[i]);
+		printf ("%d oiiii  \n", vetor[i]);
 	}
 	return 0;
 }
