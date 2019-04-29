@@ -9,8 +9,8 @@ float prod(float c, float g, float t){
 }
 
 /*Tomemos as seguintes definições:
- * ct é o custo de Geração térmica associado á unidade termoelétrican n do subsistema s, no estágio t (depedendo pode ser dias, meses,etc).
- * gt é o custo de Geração da unidade termelétrica n do subsistema s, no estágio t (depedendo pode ser dias, meses, etc).
+ * ct é o custo de Geração térmica associado á unidade termoelétrica n do subsistema s, no estágio t (depedendo pode ser dias, meses,etc).
+ * gt é o custo de Geração da unidade termoelétrica n do subsistema s, no estágio t (depedendo pode ser dias, meses, etc).
  * cd é o custo de déficit associado ao subsistema.
  * def défcit no estágio t, associado ao subsistema s.
  * nsis número de subsitemas.
