@@ -9,5 +9,5 @@ Criando o modelo já existente para verificar as possiveis atualizações que po
 Parte do modelo já foi feito, faltando agora colocar a constante obtiada pelo modelo computacional já desenvolvido.
 O código está extenso devo verifcar como coonstruir uma função para somar os elementos de um vetor ainda não conseguir, possivel solução ponteiros.
 
-Foi observado que o código fica mais simples e eficiente sem criar a função auxiliar somatorio.
+Foi observado que o código fica mais simples e eficiente sem criar a função auxiliar somatorio, instabilidade observada acima de 40.000 interações, atualizar função de custo futuro.
 
