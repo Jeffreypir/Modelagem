@@ -3,7 +3,6 @@
 
 #include <stdio.h>
 
-/* Defindo a função produto */
 float prod(float c, float g, float t){ 
 	return (c*t)*(g*t);
 }
@@ -11,8 +10,8 @@ float prod(float c, float g, float t){
 /* Definindo somatorio */
 float somatorio(float *x, int n){
 	float soma = 0.0;
-	int i;
-	for ( i = 0; i < n; i++){
+	int i = -1;
+	while ( ++i < n ){
 		soma+= x[i];
 	}
 	return soma;
@@ -29,15 +28,16 @@ float somatorio(float *x, int n){
  */
 
 /* Iniciando a função de custo futuro */
-int main(){ 
+int main(void){ 
 	float x[] = {1,2,3,4},y[] = {1,1,1,1}, z[] = {2,3,6,9}, w[]= {1,3,5,7};
-	int t,i,l,j = sizeof(x)/sizeof(x[0]);;
+	int i,l,j = sizeof(x)/sizeof(x[0]); 
+       	int t = -1;
 	printf ("Digite o valor de t(meses) para ser avaliado: ");
 	scanf("%d", &l); 
 	float valor_final[l]; 
 	float vetor[j];
-	for (t = 0; t < l; t ++){
-		for (i = 0;i < j; i++){
+	while (++t < l){
+		for ( i = 0; i < j; i++){
 			vetor[i] = prod(x[i],y[i],t) + z[i] + w[i];
 		}
 		valor_final[t] = somatorio(vetor,j);
