@@ -10,7 +10,7 @@ float prod(float c, float g, float t){
 /* Definindo somatorio */
 float somatorio(float *x, int n){
 	float soma = 0.0;
-	int i = -1;
+	register int i = -1;
 	while ( ++i < n ){
 		soma+= x[i];
 	}
@@ -30,8 +30,9 @@ float somatorio(float *x, int n){
 /* Iniciando a função de custo futuro */
 int main(void){ 
 	float x[] = {1,2,3,4},y[] = {1,1,1,1}, z[] = {2,3,6,9}, w[]= {1,3,5,7};
-	int i,l,j = sizeof(x)/sizeof(x[0]); 
-       	int t = -1;
+	register int i;
+	int l,j = sizeof(x)/sizeof(x[0]); 
+       	register int t = -1;
 	printf ("Digite o valor de t(meses) para ser avaliado: ");
 	scanf("%d", &l); 
 	float valor_final[l]; 
