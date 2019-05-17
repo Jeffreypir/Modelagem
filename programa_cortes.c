@@ -24,7 +24,7 @@
 # include <glpk.h> /*  Gnu GLPK */
 
 int main(void){ // Inicio da main ()
-		   
+	       printf ("INICIO \n");	
 		   printf ( "Primal \n");
 		   printf (" Chute Inicial: x1 = 0, x2 = 0, lambda = 0  \n \n"); 
 
