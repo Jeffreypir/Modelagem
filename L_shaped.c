@@ -1,7 +1,7 @@
 /*
  * ===========================================================================
  *
- *       Filename: mult_cortes.c 
+ *       Filename: L_shaped.c 
  *
  *    Description:  Programação utilizando os mult cortes de Benders, GNU GLPK
  *                  Despacho de energia, progrmação Linear,
@@ -10,8 +10,8 @@
  *                  Por que amamos a liberdade.
  *
  *        Version:  0.1
- *        Created:  21-05-2019 11:05:42
- *       Revision:  22-05-2019 18:26:31
+ *        Created:  23-05-2019 19:39:38
+ *       Revision:  23-05-2019 19:40:00
  *       Compiler:  gcc
  *
  *         Author:  Jefferson Bezerra dos Santos 
@@ -31,7 +31,7 @@ int main(void){ // Inicio da main ()
 
 
 		   /* Definindo o espaço amostral Omega */
-		   int Omega[] = {1.5,0.5};
+		   int Omega[] = {1.2,3.7};
 
 		   /* Definindo a probabilidades assocadas a Omega */ 
 		   double probabilidade[] = {1/2,1/2};

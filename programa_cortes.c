@@ -1,17 +1,17 @@
 /*
  * ======================================================
  *
- *       Filename:  programa_cortes.c
+ *       Filename: mult_cortes.c 
  *
- *    Description:  Programação utilizando os cortes de Benders, GNU GLPK
+ *    Description:  Programação utilizando os mult cortes de Benders, GNU GLPK
  *                  Despacho de energia, progrmação Linear,
  *                  programação estocástica. 
  *                  Viva o linux !!!
  *                  Por que amamos a liberdade.
  *
- *        Version:  0.3
- *        Created:  10-05-2019 22:36:11
- *       Revision:  none
+ *        Version:  0.1
+ *        Created:  21-05-2019 11:05:42
+ *       Revision:  21-05-2019 11:05:26
  *       Compiler:  gcc
  *
  *         Author:  Jefferson Bezerra dos Santos 
@@ -22,8 +22,9 @@
 # include <stdio.h> /* Entrada e saida C */ 
 # include <stdlib.h> /* Biblioteca padrão do C */
 # include <glpk.h> /*  Gnu GLPK */
+# include <math.h>
 
-int main(void){ // Inicio da main ()
+double PDDE(double dem){
 	       printf ("INICIO \n");	
 		   printf ( "Primal \n");
 		   printf (" Chute Inicial: x1 = 0, x2 = 0, lambda = 0  \n \n"); 
@@ -31,7 +32,7 @@ int main(void){ // Inicio da main ()
 		   /* Atualizando x1 é para o cálculo da dual 
 		   *
 		   * CHUTE INICIAL sem restrições */
-		   double x_1 = 0.0,x_2 = 0.0, lamb_da = 0.0, Qx = 2.0;
+		   double x_1 = dem ,x_2 = 0.0, lamb_da = 0.0, Qx = 2.0;
 
 
 		  /* PROBLEMA DUAL
@@ -39,8 +40,8 @@ int main(void){ // Inicio da main ()
 		   *
 		   * ======== INICIO ======== */
 		  glp_prob *ld;
-		  int iia[30+1], jja[30+1];
-		  double aar[30+1],Q,u1,u2,u3;
+		  int iia[300+1], jja[300+1];
+		  double aar[300+1],Q,u1,u2,u3;
 		  /* ========= FIM ========== */
 
 		  
@@ -50,22 +51,23 @@ int main(void){ // Inicio da main ()
 		   *
 		   * ======== INICIO ====== */
 		  glp_prob *lp;
-		  int ia[30+1], ja[30+1]; // Inciando vetores dos indices das linhas e das colunas, mesmo tamanho para ambos
+		  int ia[300+1], ja[300+1]; // Inciando vetores dos indices das linhas e das colunas, mesmo tamanho para ambos
 		  int i,l,j = 0, ci,cj; // Contadores auxiliares 
 		  double z,x1,x2,lambda; // Valores de saida
-		  double ar[30+1]; //Vetor com os valores para os indices 
-		  double sup[30+1]; //Vetor com os valores limites superiores
-		  double inf[30+1]; //Vetor com o valores inferiores
-		  double soma[10+1][30+1];// Vetor com os valores do arra dos coefientes para colocar as restrições
+		  double ar[300+1]; //Vetor com os valores para os indices 
+		  double sup[300+1]; //Vetor com os valores limites superiores
+		  double inf[300+1]; //Vetor com o valores inferiores
+		  double soma[100+1][300+1];// Vetor com os valores do arra dos coefientes para colocar as restrições
 		  /*======== FIM ========== */
 
 
 		  /* INICIANDO O LOOP */
-		  while ((Qx - lamb_da) > 0.2){  		 
+		  while (fabs((Qx - lamb_da)) >= 0.001){
 				  printf ("Diferença de (Q - lambda) = %lf \n \n",(Qx - lamb_da));	  
 				  ++j;
 				  i = 3*j;
 				  l = j;
+
  
           /* CREANDO O PROBLEMA  DUAL */
 		  ld = glp_create_prob();
@@ -134,9 +136,9 @@ int main(void){ // Inicio da main ()
 		  glp_add_cols(lp, 3);
 
           /* Definindo os coeficentes da função objetivo */
-		  glp_set_obj_coef(lp,1,2.0);
-		  glp_set_obj_coef(lp,2,2.0);
-		  glp_set_obj_coef(lp,3,1.0);
+		  glp_set_obj_coef(lp,1,2.0);/* 2*x1 */
+		  glp_set_obj_coef(lp,2,2.0);/* 2*x2 */
+		  glp_set_obj_coef(lp,3,1.0);/* lambda/5 */
 
 		  /* Definido o limites das colunas por default deixe com zero para a maioria dos problemas de progração Linear */
 		  glp_set_col_bnds(lp,1,GLP_LO,0.0,0.0);
@@ -150,19 +152,50 @@ int main(void){ // Inicio da main ()
 				 }
 		 } 
 
-         /* Definindo os limites das linhas */
-		 /* Inferiores:            Superiores: */
+		 /* Os elemento do array soma[][] obtida acima são utilizados nas restrições, use somente para cada interação a mesma coluna j */
 
-		  inf[0] = -100.0,         sup[0] = -soma[0][0];
-		  inf[1] = -100.0,         sup[1] = -soma[0][1];
-		  inf[2] = -100.0,         sup[2] = -soma[0][2];
-		  inf[3] = -100.0,         sup[3] = -soma[0][3];
-		  inf[4] = -100.0,         sup[4] = -soma[0][4];
-		  inf[5] = -100.0,         sup[5] = -soma[0][5];
-		  inf[6] = -100.0,         sup[6] = -soma[0][6];
-		  inf[7] = -100.0,         sup[7] = -soma[0][7];
-		  inf[8] = -100.0,         sup[8] = -soma[0][8];
-		  inf[9] = -100.0,         sup[9] = -soma[0][9];
+                       /* Definindo os limites das linhas */
+
+         /*==========================INICIO==================================== */
+
+		 /* Inferiores:            Superiores: */
+		 
+ 		 		/* Dados para a 1  interação */
+		  inf[0] = -100.0,         sup[0] = -soma[0][0]; /* use colunas iguais  */
+
+		       /* Dados para a 2  interação */
+		  inf[1] = -100.0,         sup[1] = -soma[0][1]; /* use colunas iguais  */
+
+		       /* Dados para a 3  interação */
+		  inf[2] = -100.0,         sup[2] = -soma[0][2]; /* use colunas iguais  */
+
+		       /* Dados para a 4  interação */
+		  inf[3] = -100.0,         sup[3] = -soma[0][3]; /* use colunas iguais  */
+
+
+		       /* Dados para a 5  interação */
+		  inf[4] = -100.0,         sup[4] = -soma[0][4]; /* use colunas iguais  */
+
+		  
+		       /* Dados para a 6  interação */
+		  inf[5] = -100.0,         sup[5] = -soma[0][5]; /* use colunas iguais  */
+
+		       /* Dados para a 7  interação */
+		  inf[6] = -100.0,         sup[6] = -soma[0][6]; /* use colunas iguais  */
+
+		       /* Dados para a 8  interação */
+		  inf[7] = -100.0,         sup[7] = -soma[0][7]; /* use colunas iguais  */
+
+
+		       /* Dados para a 9  interação */
+		  inf[8] = -100.0,         sup[8] = -soma[0][8]; /* use colunas iguais  */
+
+
+		       /* Dados para a 10  interação */
+		  inf[9] = -100.0,         sup[9] = -soma[0][9]; /* use colunas iguais  */
+
+ 		/* ============================FIM===================================== */
+
 
  
 		  /* Acrescentando as restrições  em que o loop procura o ótimo */
@@ -175,7 +208,7 @@ int main(void){ // Inicio da main ()
 
 
 		  /* Preechimento dos valores da matriz das restrições */
-		  	ia[1]  = 1, ja[1]  = 1, ar[1]  =  soma[1][0]; 
+		  	ia[1]  = 1, ja[1]  = 1, ar[1]  =  soma[1][0];
 		    ia[2]  = 1, ja[2]  = 2, ar[2]  =  soma[2][0];
 		    ia[3]  = 1, ja[3]  = 3, ar[3]  =  -1.0;
 		  }
@@ -320,24 +353,29 @@ int main(void){ // Inicio da main ()
 		  x_1 = x1;
 		  x_2 = x2;
 		  lamb_da = lambda; 
-
-		  /* Mostrando a convergência */
-		 if ((Qx - lamb_da) < 0.001){  
-				 printf("Houve convergência na interação: %d, Erro =  %lf \n \n",j, (Qx - lamb_da));
-				 printf("Os pontos ótimos são: \n");
-				 printf("x1 = %lf, x2 = %lf, lambda = %lf \n", x_1,x_2, lamb_da);
-				 printf("O valor ótimo de z: \n");
-				 printf("z = %lf\n \n", z);;
-				 break; 
-		 }
-
+		  
 		  }
+
+		/* Mostrando a convergência */
+		 printf("Houve convergência na interação: %d, Erro =  %lf \n \n",j,fabs(Qx - lamb_da));
+		 printf("Os pontos ótimos são: \n");
+		 printf("x1 = %lf, x2 = %lf, lambda = %lf \n", x_1,x_2, lamb_da);
+		 printf("O valor ótimo de z: \n");
+		 printf("z = %lf\n \n", z);
 
          /* Limpeza */
 		 glp_delete_prob(lp);
 		 glp_delete_prob(ld);
 		 glp_free_env();
+}
 
+int main(void){
+		int d;
+		FILE *arq;
+		arq = fopen("dados.txt","r");
+		while((fscanf(arq, "%d\n",&d))!=EOF){
+		PDDE(d);	
+		}
 		  return 0;
 
 } // Fim da main()
