@@ -1,5 +1,11 @@
 # !/bin/bash
 
+# Criando a pasta de Modelagem em $USER
+mkdir /home/$USER/Modelagem
+
+# Entrando na pasta criada
+cd /home/$USER/Modelagem
+
 # Criando pasta auxiliar
 mkdir prob.6.0
 
