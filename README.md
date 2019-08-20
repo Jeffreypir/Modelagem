@@ -1,4 +1,4 @@
-Modelamento de um dispacho de um dispacho de energia
+Modelamento de um despacho Hidrotérmico
 Autor:Jefferson Bezerra dos Santos
 
 Etapas do projeto:
