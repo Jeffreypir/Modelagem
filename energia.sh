@@ -3,8 +3,17 @@
 # Criando a pasta de Modelagem em $USER
 mkdir /home/$USER/Modelagem
 
+# Copiando os arquivos necessarios
+cp energia_bender_shaped.c /home/$USER/Modelagem
+cp dados.txt  /home/$USER/Modelagem
+cp dados2.txt /home/$USER/Modelagem
+cp peso.txt   /home/$USER/Modelagem
+
 # Entrando na pasta criada
 cd /home/$USER/Modelagem
+
+# Compilar o algoritmo energia_bender_shaped.c
+ gcc -Wall energia_bender_shaped.c -lglpk -o energia_bender_shaped
 
 # Criando pasta auxiliar
 mkdir prob.6.0
@@ -82,3 +91,4 @@ do
 		done
 
 done
+
