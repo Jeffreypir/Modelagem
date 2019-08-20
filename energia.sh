@@ -6,7 +6,7 @@ mkdir prob.6.0
 # Limpando dados antigos
 rm -r prob*.*
 
-echo "oi" > oi.dat
+echo "Tudo deu certo na criação do arquivos" > leia.dat
 rm *dat
 
 
@@ -20,10 +20,10 @@ do
 		echo "$p" > peso.txt
 
 		# Criacao de arquivo auxiliar
-		echo "oi" > oi.dat
+		echo "Tudo deu certo na criação do arquivos" > leia.dat
 
 		# Criando a pasta de probabilidade
-		mkdir /home/jefferson/Documentos/projeto_jeffrey/Modelagem/prob."$p"
+		mkdir /home/$USER/Modelagem/prob."$p"
 
 		# Remocao de arquivos 
 		rm *dat
@@ -64,14 +64,14 @@ do
 				done
 
 				# Arquivando dados 
-				mkdir /home/jefferson/Documentos/projeto_jeffrey/Modelagem/prob."$p"/simulacao."$j"
-				cp *dat /home/jefferson/Documentos/projeto_jeffrey/Modelagem/prob."$p"/simulacao."$j"
+				mkdir /home/$USER/Modelagem/prob."$p"/simulacao."$j"
+				cp *dat /home/$USER/Modelagem/prob."$p"/simulacao."$j"
 
 				# Remocao de dados
 				rm *dat
 
 				# Criacao de arquivo auxiliar
-				echo "oi" > oi.dat
+				echo "Tudo de certo na criação dos arquivos" > leia.dat
 				clear
 		done
 
