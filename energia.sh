@@ -1,16 +1,34 @@
 # !/bin/bash
 
-# Criando a pasta de Modelagem em $USER
-mkdir /home/$USER/Modelagem
+echo "Verificando a existência da pasta modelagem" 
 
+# Testando a existencia da pasta modelagem
+nome=`ls -al|grep "^d"|grep "Modelamento"|cut -c56-`
+nome1="Modelamento"
+
+# Iniciando o teste
+if [ "$nome" == "$nome1" ]
+then
+		echo "A pasta $nome existe"
+		echo "Apagando a pasta $nome"
+		rm -r /home/$USER/Modelamento
+else
+		echo "A pasta $nome1 não existe"
+		echo "Criando a pasta $nome1"
+		mkdir /home/$USER/Modelamento
+
+fi
+
+sleep 5
+echo "Copiando os arquivos necessarios para a pasta $nome1"
 # Copiando os arquivos necessarios
-cp energia_bender_shaped.c /home/$USER/Modelagem
-cp dados.txt  /home/$USER/Modelagem
-cp dados2.txt /home/$USER/Modelagem
-cp peso.txt   /home/$USER/Modelagem
+cp energia_bender_shaped.c /home/$USER/Modelamento
+cp dados.txt  /home/$USER/Modelamento
+cp dados2.txt /home/$USER/Modelamento
+cp peso.txt   /home/$USER/Modelamento
 
 # Entrando na pasta criada
-cd /home/$USER/Modelagem
+cd /home/$USER/Modelamento
 
 # Compilar o algoritmo energia_bender_shaped.c
  gcc -Wall energia_bender_shaped.c -lglpk -o energia_bender_shaped
@@ -38,7 +56,7 @@ do
 		echo "Tudo deu certo na criação do arquivos" > leia.dat
 
 		# Criando a pasta de probabilidade
-		mkdir /home/$USER/Modelagem/prob."$p"
+		mkdir /home/$USER/Modelamento/prob."$p"
 
 		# Remocao de arquivos 
 		rm *dat
@@ -79,8 +97,8 @@ do
 				done
 
 				# Arquivando dados 
-				mkdir /home/$USER/Modelagem/prob."$p"/simulacao."$j"
-				cp *dat /home/$USER/Modelagem/prob."$p"/simulacao."$j"
+				mkdir /home/$USER/Modelamento/prob."$p"/simulacao."$j"
+				cp *dat /home/$USER/Modelamento/prob."$p"/simulacao."$j"
 
 				# Remocao de dados
 				rm *dat
