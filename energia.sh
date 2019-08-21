@@ -3,6 +3,9 @@
 echo "Verificando a existência da pasta modelagem" 
 sleep 3
 
+# Voltando ao diretório principal
+cd /home/$USER/
+
 # Testando a existencia da pasta modelagem
 nome=`ls -al|grep "^d"|grep "Modelamento"|cut -c56-`
 nome1="Modelamento"
@@ -21,6 +24,10 @@ else
 fi
 
 sleep 3
+# Voltando para a pasta com os arquivos necessários
+
+cd /home/$USER/Modelagem
+
 echo "Copiando os arquivos necessarios para a pasta $nome1"
 sleep 3
 # Copiando os arquivos necessarios
