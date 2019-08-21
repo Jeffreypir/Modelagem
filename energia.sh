@@ -1,6 +1,7 @@
 # !/bin/bash
 
 echo "Verificando a existência da pasta modelagem" 
+sleep 3
 
 # Testando a existencia da pasta modelagem
 nome=`ls -al|grep "^d"|grep "Modelamento"|cut -c56-`
@@ -19,8 +20,9 @@ else
 
 fi
 
-sleep 5
+sleep 3
 echo "Copiando os arquivos necessarios para a pasta $nome1"
+sleep 3
 # Copiando os arquivos necessarios
 cp energia_bender_shaped.c /home/$USER/Modelamento
 cp dados.txt  /home/$USER/Modelamento
