@@ -1,14 +1,15 @@
 # !/bin/bash
 
 echo "Verificando a existência da pasta modelagem" 
-sleep 3
 
+sleep 2
 # Voltando ao diretório principal
 cd /home/$USER/
 
 # Testando a existencia da pasta modelagem
 nome=`ls -al|grep "^d"|grep "Modelamento"|cut -c56-`
 nome1="Modelamento"
+sleep 2
 
 # Iniciando o teste
 if [ "$nome" == "$nome1" ]
@@ -16,6 +17,8 @@ then
 		echo "A pasta $nome existe"
 		echo "Apagando a pasta $nome"
 		rm -r /home/$USER/Modelamento
+		echo "Criando nova pasta $nome"
+		mkdir /home/$USER/Modelamento
 else
 		echo "A pasta $nome1 não existe"
 		echo "Criando a pasta $nome1"
@@ -23,9 +26,9 @@ else
 
 fi
 
-sleep 3
+sleep 2
 # Voltando para a pasta com os arquivos necessários
-
+echo "Entrando na pasta Modelagem"
 cd /home/$USER/Modelagem
 
 echo "Copiando os arquivos necessarios para a pasta $nome1"
