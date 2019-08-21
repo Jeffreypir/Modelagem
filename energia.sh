@@ -1,6 +1,6 @@
 # !/bin/bash
 
-echo "Verificando a existência da pasta modelagem" 
+echo "Verificando a existência da pasta modelamento" 
 
 sleep 2
 # Voltando ao diretório principal
@@ -16,12 +16,14 @@ if [ "$nome" == "$nome1" ]
 then
 		echo "A pasta $nome existe"
 		echo "Apagando a pasta $nome"
+		sleep 1
 		rm -r /home/$USER/Modelamento
 		echo "Criando nova pasta $nome"
 		mkdir /home/$USER/Modelamento
 else
 		echo "A pasta $nome1 não existe"
 		echo "Criando a pasta $nome1"
+		sleep 1
 		mkdir /home/$USER/Modelamento
 
 fi
