@@ -1,24 +1,32 @@
-Modelamento de um despacho Hidrotérmico
+# Modelamento do Despacho Hidrotérmico
 
 Autor:Jefferson Bezerra dos Santos
 
-Etapas do projeto:
+Para a utilização do algoritmo do algoritmo é necessário a utilização da biblioteca GLPK  
+para Programação Linear. A instalação em distribuiões Debian e Debian baseadas 
+é dada por:
 
-1 Etapa:
+			apt install libglpk-dev
 
-Criação do modelo para análise.
+como usuário root.   
+O linguagem R deve está instalada, além do bash.
 
-A modelagem utilizada como ferramenta principal a programação dual estocástica.
-O arquivo principal é constituido em C.
-Os arquivo auxiliar foi feito em shell script.
-O ambiente foi a distribuição Gnu/linux Debian.
-A principal ferramenta em C utilizada é a biblioteca de progração linear do gnu, glpk.
-O algoritmo já está com os principais comentários para a sua utilização.
-O arquivo principal  é "energia_bender_shaped.c", gerar os dados.
-O arquivo auxiliar é "energia.sh", criar e formata os arquivos e pastas necessarias.
-O algoritmo está configurado para gerar as mesmas pastas deste repositório.
-Para verificar o funcionamento do algoritmo utilizar as pastas. 
+### Os principais pontos a serem elencados são:
 
-Observação:
+* O ambiente foi a distribuição Gnu/linux Debian.
+* O algoritmo possui comentários para a sua utilização, é necessária a leitura.
+* O algoritmo está configurado para gerar as mesmas pastas deste repositório. 
+* O arquivo principal é constituido em C.
+* O arquivo principal é "energia_bender_shaped.c", gerar os dados.
+* O primeiro arquivo auxiliar é feito em shell script, bash.
+* O arquivo auxiliar é "energia.sh", criar e formata os arquivos e pastas necessarias.
+* Os segundo e o terceiro arquivo auxiliar tem como função criar as figuras em .eps e .pdf.  
+* O segundo arquivo é simular.r e o terceiro arquivo é scusto.r 
+
+O segundo e terceiro arquivo podem ser substituídos por outra linguagem para a construção  
+da figuras, por exemplo python. Veja a wiki do projeto para maiores detalhes teóricos.
+
+## Observação:
+
 Utilizar uma distribuição Gnu/linux tornará a implementação do algoritmos mais fácil.
 A documentação deste projeto está incompleta, ainda fazendo a documentação.
