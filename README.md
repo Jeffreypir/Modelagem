@@ -24,7 +24,7 @@ O linguagem R deve está instalada, além do bash.
 * O segundo arquivo é simular.r e o terceiro arquivo é scusto.r 
 
 O segundo e terceiro arquivo podem ser substituídos por outra linguagem para a construção  
-da figuras, por exemplo python. Veja a wiki do projeto para maiores detalhes teóricos.
+das figuras, por exemplo python. Veja a wiki do projeto para maiores detalhes teóricos.
 
 ## Observação:
 
