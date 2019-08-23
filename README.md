@@ -28,5 +28,5 @@ das figuras, por exemplo python. Veja a wiki do projeto para maiores detalhes te
 
 ## Observação:
 
-Utilizar uma distribuição Gnu/linux tornará a implementação do algoritmos mais fácil.
+Utilizar uma distribuição Gnu/linux tornará a implementação do algoritmo  mais fácil.
 A documentação deste projeto está incompleta, ainda fazendo a documentação.
