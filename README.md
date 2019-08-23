@@ -20,7 +20,7 @@ O linguagem R deve está instalada, além do bash.
 * O arquivo principal é "energia_bender_shaped.c", gerar os dados.
 * O primeiro arquivo auxiliar é feito em shell script, bash.
 * O arquivo auxiliar é "energia.sh", criar e formata os arquivos e pastas necessarias.
-* Os segundo e o terceiro arquivo auxiliar tem como função criar as figuras em .eps e .pdf.  
+* O segundo e o terceiro arquivo auxiliar possuem como função criar as figuras em .eps e .pdf.  
 * O segundo arquivo é simular.r e o terceiro arquivo é scusto.r 
 
 O segundo e terceiro arquivo podem ser substituídos por outra linguagem para a construção  
