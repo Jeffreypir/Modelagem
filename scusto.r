@@ -5,9 +5,9 @@ demanda <-unlist (read.table("demanda.dat"))
 custo <- unlist (read.table("z.dat"))
 
 # Criando arquivo de plotagem eps
-cairo_ps("zpb01pt10.eps",5.0,5.0)
+cairo_ps("custo.eps",5.0,5.0)
 matplot (demanda,cbind(custo),
-		 main= "Curva do Custo Esperado 1",
+		 main= "Curva do Custo Esperado",
 		 font.main=1,
 		 xlab="Demanda (MW)",
 		 col = c("red"), 
@@ -33,9 +33,9 @@ legend (
 dev.off()
 
 # Criando arquivo de plotagem pdf
-pdf("zpb01pt10.pdf",5.0,5.0)
+pdf("custo.pdf",5.0,5.0)
 matplot (demanda,cbind(custo),
-		 main= "Curva do Custo Esperado 1",
+		 main= "Curva do Custo Esperado ",
 		 font.main=1,
 		 xlab="Demanda (MW)",
 		 col = c("red"), 
