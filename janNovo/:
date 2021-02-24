@@ -1,0 +1,5 @@
+# Scritpt para nova curva de carga janNovo
+dados1 <- read.table("janNovo.txt")
+dados <- as.numeric(unlist(dados1))
+
+write.table(dados, file = "janNovo.txt", sep = "\t", na = "", quote = FALSE)

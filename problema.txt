@@ -1,0 +1,7 @@
+Verificando a existência da pasta modelamento
+A pasta Modelamento existe
+Apagando a pasta Modelamento
+Criando nova pasta Modelamento
+ 
+Entrando na pasta Modelagem no subdiretorio: fevereiro2019 
+Iniciando simulação: fevereiro2019
